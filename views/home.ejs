@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelHub</title>
+</head>
+<body>
+    <h1>TravelHub</h1>
+    <h2>Organize Your World</h2>
+    <% if (user) { %>
+        <p>Hello, <%= user.username %>.  What would you like to do?</p>
+
+        <a href = "/auth/sign-out">Sign out</a>
+    <% } else { %>
+    <a href="/auth/sign-up">Sign up</a>
+    <a href="/auth/sign-in">Sign in</a>
+    <% } %>
+</body>
+</html>
