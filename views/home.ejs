@@ -10,7 +10,7 @@
     <h1>TravelHub</h1>
     <h2>Organize Your World</h2>
     <% if (user) { %>
-        <p>Hello, <%= user.username %>.  What would you like to do?</p>
+        <p>Hello, <%= user.firstName %>.  What would you like to do?</p>
 
         <a href = "/auth/sign-out">Sign out</a>
     <% } else { %>
