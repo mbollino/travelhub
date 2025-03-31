@@ -35,9 +35,11 @@ app.use(
 app.use(passUserToView)
 
 app.get('/', async (req, res) => {
-    res.render("home.ejs", {
-        user: req.session.user
-    })
+    if(req.session.user) {
+        res.redirect(`/users/${req.session.user._id}/clients`)
+    } else {
+        res.render('home.ejs')
+    }
 })
 
 app.use('/auth', authController)

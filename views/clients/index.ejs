@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= user.username %>'s Clients</title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1><%= user.username %>'s Clients</h1>
+    <a href="/users/<%= user._id %>/clients/new">Add a Client</a>
+    <ul>
+        <% clients.forEach((client) => { %>
+        <li>
+            <a href="/users/<%= user._id %>/clients/<%= client._id %>">
+            Depart Date: <%= client.departDate.toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit' }) %> <%= client.firstName %> <%= client.lastName %>
+            </a>
+        </li>
+        <% }) %>
+    </ul>
+</body>
+</html>
