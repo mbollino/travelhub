@@ -17,11 +17,12 @@
         <input type="text" name="firstName" id="firstName">
 
         <label for="phoneNumber">Phone Number:</label>
-        <input type="text" name="phoneNumber" id="phoneNumber" >
-        <label>Type:</label>
-        <input type="radio" id="office" name="category" value="office">
+        <input type="text" name="phoneNumber.number" id="phoneNumber.number" >
+
+        <label for="phoneCategory">Type:</label>
+        <input type="radio" id="office" name="phoneNumber.category" value="office">
         <label for="office">Office</label>
-        <input type="radio" id="mobile" name="category" value="mobile">
+        <input type="radio" id="mobile" name="phoneNumber.category" value="mobile">
         <label for="mobile">Mobile</label>
         <label for="phonePreferred">Preferred Contact</label>
         <input type="checkbox" name="phonePreferred" id="phonePreferred" >

@@ -10,8 +10,10 @@ const clientSchema = mongoose.Schema({
     required: true,
   },
   phoneNumber: {
-    type: String,
-    required: true,
+    number: {
+      type: String,
+      required: true,
+    },
     category: {
       type: String,
       enum: ["office", "mobile"],
@@ -83,8 +85,10 @@ const userSchema = mongoose.Schema({
     required: true,
   },
   phoneNumber: {
-    type: String,
-    required: true,
+    number: {
+      type: String,
+      required: true,
+    },
     category: {
       type: String,
       enum: ["office", "mobile"],

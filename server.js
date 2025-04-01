@@ -21,7 +21,7 @@ mongoose.connection.on('connected', () => {
     console.log(`Connected to MongoDB ${mongoose.connection.name}`)
 })
 
-app.use(express.urlencoded({ extended: false}))
+app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
 app.use(morgan('dev'))
 app.use(
@@ -33,6 +33,8 @@ app.use(
 )
 
 app.use(passUserToView)
+app.use('/auth', authController)
+app.use(isSignedIn)
 
 app.get('/', async (req, res) => {
     if(req.session.user) {
@@ -42,8 +44,6 @@ app.get('/', async (req, res) => {
     }
 })
 
-app.use('/auth', authController)
-app.use(isSignedIn)
 app.use('/users/:userId/clients', clientsController)
 
 app.listen(port, () => {
