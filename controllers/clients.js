@@ -7,7 +7,7 @@ router.get("/", async (req, res) => {
   try {
     const currentUser = await User.findById(req.session.user._id);
     res.render("clients/index.ejs", {
-      clients: currentUser.clients,
+      currentClients: currentUser.currentClients,
     });
   } catch (error) {
     console.log(error);
@@ -32,11 +32,7 @@ router.post("/", async (req, res) => {
     } else {
       req.body.emailPreferred = false;
     }
-    // const departDateArray = req.body.departDate.split("-")
-    // req.body.departDate = new Date(Date.UTC(parseInt(departDateArray[0]), parseInt(departDateArray[1]) - 1, parseInt(departDateArray[2])))
-    // const returnDateArray = req.body.returnDate.split("-")
-    // req.body.returnDate = new Date(Date.UTC(parseInt(returnDateArray[0]), parseInt(returnDateArray[1]) - 1, parseInt(returnDateArray[2])))
-    currentUser.clients.push(req.body);
+    currentUser.currentClients.push(req.body);
     await currentUser.save();
     res.redirect(`/users/${currentUser._id}/clients`);
   } catch (error) {
@@ -48,9 +44,9 @@ router.post("/", async (req, res) => {
 router.get("/:clientId", async (req, res) => {
   try {
     const currentUser = await User.findById(req.session.user._id);
-    const client = currentUser.clients.id(req.params.clientId);
+    const currentClient = currentUser.currentClients.id(req.params.clientId);
     res.render("clients/show.ejs", {
-      client: client,
+      currentClient: currentClient,
     });
   } catch (error) {
     console.log(error);
@@ -61,7 +57,7 @@ router.get("/:clientId", async (req, res) => {
 router.delete("/:clientId", async (req, res) => {
   try {
     const currentUser = await User.findById(req.session.user._id);
-    currentUser.clients.id(req.params.clientId).deleteOne();
+    currentUser.currentClients.id(req.params.clientId).deleteOne();
     await currentUser.save();
     res.redirect(`/users/${currentUser._id}/clients`);
   } catch (error) {
@@ -73,9 +69,9 @@ router.delete("/:clientId", async (req, res) => {
 router.get("/:clientId/edit", async (req, res) => {
   try {
     const currentUser = await User.findById(req.session.user._id);
-    const client = currentUser.clients.id(req.params.clientId);
+    const currentClient = currentUser.currentClients.id(req.params.clientId);
     res.render("clients/edit.ejs", {
-      client: client,
+      currentClient: currentClient,
     });
   } catch (error) {
     console.log(error);
@@ -86,7 +82,7 @@ router.get("/:clientId/edit", async (req, res) => {
 router.put("/:clientId", async (req, res) => {
   try {
     const currentUser = await User.findById(req.session.user._id);
-    const client = currentUser.clients.id(req.params.clientId);
+    const currentClient = currentUser.currentClients.id(req.params.clientId);
     if (req.body.phonePreferred === "on") {
       req.body.phonePreferred = true;
     } else {
@@ -97,7 +93,7 @@ router.put("/:clientId", async (req, res) => {
     } else {
       req.body.emailPreferred = false;
     }
-    client.set(req.body);
+    currentClient.set(req.body);
     await currentUser.save();
     res.redirect(`/users/${currentUser._id}/clients/${req.params.clientId}`);
   } catch (error) {

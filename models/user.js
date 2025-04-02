@@ -95,7 +95,7 @@ const userSchema = mongoose.Schema({
       required: true,
     },
   },
-  clients: [clientSchema],
+  currentClients: [clientSchema],
 });
 
 const User = mongoose.model("User", userSchema);

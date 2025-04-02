@@ -6,6 +6,7 @@ const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 const morgan = require('morgan')
 const session = require('express-session')
+const path = require('path')
 
 const isSignedIn = require('./middleware/is-signed-in.js')
 const passUserToView = require('./middleware/pass-user-to-view.js')
@@ -21,6 +22,8 @@ mongoose.connection.on('connected', () => {
     console.log(`Connected to MongoDB ${mongoose.connection.name}`)
 })
 
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
 app.use(morgan('dev'))

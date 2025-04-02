@@ -17,3 +17,7 @@
     </form>
 </body>
 </html>
+
+        <!-- new Date(client.departDate).toISOString() converts the date to an ISO 8601 string like "2025-03-31T00:00:00.000Z"
+        .split('T')[0] extracts the date portion ("2025-03-31")
+        The ? : '' part ensures that if client.departDate or client.returnDate is null or undefined, the field will remain empty -->

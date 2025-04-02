@@ -10,10 +10,21 @@
     <h1><%= user.username %>'s Clients</h1>
     <a href="/users/<%= user._id %>/clients/new">Add a Client</a>
     <ul>
-        <% clients.forEach((client) => { %>
+        <% currentClients.forEach((currentClient) => { %>
         <li>
-            <a href="/users/<%= user._id %>/clients/<%= client._id %>">
-            Depart Date: <%= new Date(client.departDate).toISOString().split('T')[0] %> <%= client.firstName %> <%= client.lastName %>
+            <a href="/users/<%= user._id %>/clients/<%= currentClient._id %>">
+                <% 
+                const departDate = new Date(currentClient.departDate)
+                const month = String(departDate.getUTCMonth() + 1).padStart(2, "0")
+                const day = String(departDate.getUTCDate()).padStart(2, "0")
+                const year = departDate.getUTCFullYear()
+                const formattedDate = `${month}/${day}/${year}`
+              %>
+              <p>
+                Depart Date: <%= formattedDate %> <%= currentClient.firstName %> <%= currentClient.lastName %>
+              </p>
+           
+              
             </a>
         </li>
         <% }) %>

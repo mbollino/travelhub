@@ -3,45 +3,64 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= client.firstName %> <%= client.lastName %></title>
+    <title><%= currentClient.firstName %> <%= currentClient.lastName %></title>
   </head>
   <body>
-    <h1><%= client.firstName %> <%= client.lastName %></h1>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1><%= currentClient.firstName %> <%= currentClient.lastName %></h1>
     <p>
-      Phone Number: <% const phoneNumber = client.phoneNumber.number; 
-      const formattedPhoneNumber = `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}` %> 
-      <%= formattedPhoneNumber %> <%= client.phoneNumber.category %> 
-      <% if (client.phonePreferred === true) { %>
-        <%= " - Preferred Contact" %> 
-      <% } %>
+      Phone Number: <% const phoneNumber = currentClient.phoneNumber.number; const
+      formattedPhoneNumber = `(${phoneNumber.slice(0, 3)})
+      ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}` %> <%=
+      formattedPhoneNumber %> <%= currentClient.phoneNumber.category %> <% if
+      (currentClient.phonePreferred === true) { %> <%= " - Preferred Contact" %> <% }
+      %>
     </p>
     <p>
-      Email: <%= client.email %> <% if (client.emailPreferred === true) { %> 
-        <%= " - Preferred Contact" %> 
-      <% } %>
+      Email: <%= currentClient.email %> <% if (currentClient.emailPreferred === true) { %> <%=
+      " - Preferred Contact" %> <% } %>
     </p>
+    <% 
+      const departDate = new Date(currentClient.departDate)
+      const month = String(departDate.getUTCMonth() + 1).padStart(2, "0")
+      const day = String(departDate.getUTCDate()).padStart(2, "0")
+      const year = departDate.getUTCFullYear()
+      const formattedDate = `${month}/${day}/${year}`
+    %>
     <p>
-      Depart Date: <%= new Date(client.departDate).toISOString().split('T')[0] %>
+      Depart Date: <%= formattedDate %>
     </p>
+    <%
+      const returnDate = new Date(currentClient.returnDate)
+      const returnMonth = String(returnDate.getUTCMonth() + 1).padStart(2, "0")
+      const returnDay = String(returnDate.getUTCDate()).padStart(2, "0")
+      const returnYear = returnDate.getUTCFullYear()
+      const formattedReturnDate = `${returnMonth}/${returnDay}/${returnYear}`
+    %>
     <p>
-      Return Date: <%= new Date(client.returnDate).toISOString().split('T')[0] %>
+      Return Date: <%= formattedReturnDate %>
     </p>
-    <p>Destination: <%= client.destination %></p>
-    <% if (client.hotel) { %>
-    <p>Hotel: <%= client.hotel %></p>
-    <% } %> <% if (client.airline) { %>
-    <p>Airline: <%= client.airline %></p>
+    <p>Destination: <%= currentClient.destination %></p>
+    <% if (currentClient.hotel) { %>
+    <p>Hotel: <%= currentClient.hotel %></p>
+    <% } %> <% if (currentClient.airline) { %>
+    <p>Airline: <%= currentClient.airline %></p>
     <% } %>
-    <p>Car Rental: <%= client.carRentalRequired %></p>
-    <p>Current Status: <%= client.status %></p>
-    <% if (client.notes) { %>
-    <p>Notes: <%= client.notes %></p>
+    <p>Car Rental: <%= currentClient.carRentalRequired %></p>
+    <p>Current Status: <%= currentClient.status %></p>
+    <% if (currentClient.notes) { %>
+    <p>Notes: <%= currentClient.notes %></p>
     <% } %>
 
-    <a href="/users/<%= user._id %>/clients/<%= client._id %>/edit">Edit this client</a>
-    
-    <form action="/users/<%= user._id %>/clients/<%= client._id %>?_method=DELETE" method="POST">
-        <button type="submit">Delete this client</button>
+    <a href="/users/<%= user._id %>/clients/<%= currentClient._id %>/edit"
+      >Edit this Client</a
+    >
+
+    <form
+      action="/users/<%= user._id %>/clients/<%= currentClient._id %>?_method=DELETE"
+      method="POST"
+    >
+      <button type="submit">Delete this Client</button>
     </form>
   </body>
 </html>
