@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title><%= user.userFirstName %>'s Travelers</title>
+  </head>
+  <body class="all">
+    <%- include('../partials/_navbar.ejs') %>
+    <div class="alltravelers">
+      <div class="allheader">
+        <h1><%= user.userFirstName %>'s Travelers</h1>
+        <a class="addapplink" href="/users/<%= user._id %>/travelers/new"
+          >Add a Traveler</a
+        >
+      </div>
+        <ul>
+          <% travelers.forEach((traveler) => { %>
+          <li>
+            <a class="travelerslist" href="/users/<%= user._id %>/travelers/<%= traveler._id %>">
+              <% 
+              const departDate = new Date(traveler.departDate) 
+              const month = String(departDate.getUTCMonth() + 1).padStart(2, "0") 
+              const day = String(departDate.getUTCDate()).padStart(2, "0") 
+              const year = departDate.getUTCFullYear() 
+              const formattedDate = `${month}/${day}/${year}` %>
+              <p>
+                Depart Date: <%= formattedDate %> <%= traveler.firstName %> <%= traveler.lastName %>
+              </p>
+            </a>
+          </li>
+          <% }) %>
+        </ul>
+    </div>
+  </body>
+</html>

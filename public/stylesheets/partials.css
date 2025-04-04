@@ -1,26 +1,32 @@
+.signed-in-navbar {
+  display: flex;
+  flex-direction: row;
+  max-width: 100vw;
+  padding: 5px 20px;
+  justify-content: right;
+  align-items: center;
+}
+
+.signed-in-navbar .authlink:hover {
+  color: black;
+}
+
 .navbar {
-    display: flex;
-    flex-direction: row;
-    max-width: 100vw;
-    padding: 5px 20px;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  #logo {
-    /* color: #ce4866; */
-    size: 40em !important;
-    margin: 0;
-  }
-  
-  .authlink {
-    text-decoration: none;
-    margin: 0 15px;
-    color: #4b598e;
-    font-weight: bold;
-  }
-  
-  .authlink:hover {
-    color: white;
-  }
-  
+  display: flex;
+  flex-direction: row;
+  max-width: 100vw;
+  padding: 5px 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.authlink {
+  text-decoration: none;
+  margin: 0 15px;
+  color: #4b598e;
+  font-weight: bold;
+}
+
+.navbar .authlink:hover {
+  color: white;
+}

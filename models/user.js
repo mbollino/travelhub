@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const clientSchema = mongoose.Schema({
+const travelerSchema = mongoose.Schema({
   lastName: {
     type: String,
     required: true,
@@ -72,30 +72,30 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  firstName: {
+  userFirstName: {
     type: String,
     required: true,
   },
-  lastName: {
+  userLastName: {
     type: String,
     required: true,
   },
-  email: {
+  userEmail: {
     type: String,
     required: true,
   },
-  phoneNumber: {
-    number: {
+  userPhoneNumber: {
+    userNumber: {
       type: String,
       required: true,
     },
-    category: {
+    userCategory: {
       type: String,
       enum: ["office", "mobile"],
       required: true,
     },
   },
-  currentClients: [clientSchema],
+  travelers: [travelerSchema],
 });
 
 const User = mongoose.model("User", userSchema);

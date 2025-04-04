@@ -13,7 +13,7 @@ const passUserToView = require('./middleware/pass-user-to-view.js')
 const port = process.env.PORT ? process.env.PORT: '3000'
 
 const authController = require('./controllers/auth.js')
-const clientsController = require('./controllers/clients.js')
+const travelersController = require('./controllers/travelers.js')
 
 const path = require('path')
 
@@ -41,7 +41,7 @@ app.use(passUserToView)
 
 app.get('/', async (req, res) => {
     if (req.session.user) {
-        res.redirect(`/users/${req.session.user._id}.clients`)
+        res.redirect(`/users/${req.session.user._id}/travelers`)
     } else {
     res.render('home.ejs')
     }
@@ -50,7 +50,7 @@ app.get('/', async (req, res) => {
 app.use('/auth', authController)
 app.use(isSignedIn)
 
-app.use('/users/:userId/clients', clientsController)
+app.use('/users/:userId/travelers', travelersController)
 
 app.listen(port, () => {
     console.log(`The express app is ready on port ${port}`)

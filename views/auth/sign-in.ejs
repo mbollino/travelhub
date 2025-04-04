@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>Sign In</title>
-</head>
-<body>
+  </head>
+  <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>Sign in</h1>
-    <form action="/auth/sign-in" method="POST">
-      <label for="username">Username:</label>
-      <input type="text" name="username" id="username" />
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password" />
-      <button type="submit">Sign in</button>
-    </form>
-</body>
+    <div class="signin">
+      <h1>Sign in</h1>
+      <form action="/auth/sign-in" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" />
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" />
+        <button type="submit">Sign in</button>
+      </form>
+    </div>
+  </body>
 </html>
 
-        <!-- new Date(client.departDate).toISOString() converts the date to an ISO 8601 string like "2025-03-31T00:00:00.000Z"
-        .split('T')[0] extracts the date portion ("2025-03-31")
-        The ? : '' part ensures that if client.departDate or client.returnDate is null or undefined, the field will remain empty -->
+

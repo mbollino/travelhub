@@ -1,43 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>Sign Up</title>
-</head>
-<body>
+  </head>
+  <body>
     <%- include('../partials/_navbar.ejs') %>
     <h1>Create a new account!</h1>
-    <form action="/auth/sign-up" method="POST">
+    <div class="signup">
+      <form action="/auth/sign-up" method="POST">
         <label for="username">Username:</label>
-        <input type="text" name="username" id="username">
+        <input type="text" name="username" id="username" />
 
         <label for="password">Password:</label>
-        <input type="password" name="password" id="password">
+        <input type="password" name="password" id="password" />
 
         <label for="confirmPassword">Confirm Password:</label>
-        <input type="password" name="confirmPassword" id="confirmPassword">
+        <input type="password" name="confirmPassword" id="confirmPassword" />
 
-        <label for="firstName">First Name:</label>
-        <input type="text" name="firstName" id="firstName">
+        <label for="userFirstName">First Name:</label>
+        <input type="text" name="userFirstName" id="userFirstName" />
 
-        <label for="lastName">Last Name:</label>
-        <input type="text" name="lastName" id="lastName">
+        <label for="userLastName">Last Name:</label>
+        <input type="text" name="userLastName" id="userLastName" />
 
-        <label for="email">Email:</label>
-        <input type="text" name="email" id="email">
+        <label for="userEmail">Email:</label>
+        <input type="text" name="userEmail" id="userEmail" />
 
-        <label for="phoneNumber">Phone Number:</label>
-        <input type="text" name="phoneNumber.number" id="phoneNumber.number">
-        <label for="phoneCategory">Type:</label>
-        <input type="radio" id="office" name="phoneNumber.category" value="office">
-        <label for="office">Office</label>
+        <label for="userPhoneNumber">Phone Number:</label>
+        <input
+          type="text"
+          name="userPhoneNumber.userNumber"
+          id="userPhoneNumber.userNumber"
+        />
+        <div class="radio">
+          <label for="userPhoneCategory">Type:</label>
+          <input
+            type="radio"
+            id="office"
+            name="userPhoneNumber.userCategory"
+            value="office"
+          />
+          <label for="office">Office</label>
 
-        <input type="radio" id="mobile" name="phoneNumber.category" value="mobile">
-        <label for="mobile">Mobile</label>
-
+          <input
+            type="radio"
+            id="mobile"
+            name="userPhoneNumber.userCategory"
+            value="mobile"
+          />
+          <label for="mobile">Mobile</label>
+        </div>
         <button type="submit">Sign up</button>
       </form>
-</body>
+    </div>
+  </body>
 </html>
