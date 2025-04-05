@@ -53,18 +53,18 @@
                         <input type="checkbox" name="emailPreferred" id="emailPreferred" <% if (traveler.emailPreferred)
                             { %> checked <% } %> >
                     </div>
-                </div>
-                <div class="column">
                     <div class="departDate">
                         <label for="departDate">Depart Date:</label>
                         <input type="date" name="departDate" id="departDate"
-                            value="<%= traveler.departDate ? new Date(traveler.departDate).toISOString().split('T')[0] : '' %>" />
+                        value="<%= traveler.departDate ? new Date(traveler.departDate).toISOString().split('T')[0] : '' %>" />
                     </div>
                     <div class="returnDate">
                         <label for="returnDate">Return Date:</label>
                         <input type="date" name="returnDate" id="returnDate"
-                            value="<%= traveler.returnDate ? new Date(traveler.returnDate).toISOString().split('T')[0] : '' %>" />
+                        value="<%= traveler.returnDate ? new Date(traveler.returnDate).toISOString().split('T')[0] : '' %>" />
                     </div>
+                </div>
+                <div class="column">
                     <div class="destination">
                         <label for="destination">Destination:</label>
                         <input type="text" name="destination" id="destination" value="<%= traveler.destination %>" />

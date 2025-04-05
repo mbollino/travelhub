@@ -8,7 +8,7 @@
 }
 
 .signed-in-navbar .authlink:hover {
-  color: black;
+  color: rgb(255, 83, 120);
 }
 
 .navbar {
@@ -28,5 +28,5 @@
 }
 
 .navbar .authlink:hover {
-  color: white;
+  color: rgb(255, 83, 120);
 }

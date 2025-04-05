@@ -3,65 +3,82 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title><%= traveler.firstName %> <%= traveler.lastName %></title>
   </head>
-  <body>
+
+  <body class="show">
     <%- include('../partials/_navbar.ejs') %>
-    <h1><%= traveler.firstName %> <%= traveler.lastName %></h1>
-    <p>
-      Phone Number: <% const phoneNumber = traveler.phoneNumber.number; const
-      formattedPhoneNumber = `(${phoneNumber.slice(0, 3)})
-      ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}` %> <%=
-      formattedPhoneNumber %> <%= traveler.phoneNumber.category %> <% if
-      (traveler.phonePreferred === true) { %> <%= " - Preferred Contact" %> <% }
-      %>
-    </p>
-    <p>
-      Email: <%= traveler.email %> <% if (traveler.emailPreferred === true) { %> <%=
-      " - Preferred Contact" %> <% } %>
-    </p>
-    <% 
-      const departDate = new Date(traveler.departDate)
-      const month = String(departDate.getUTCMonth() + 1).padStart(2, "0")
-      const day = String(departDate.getUTCDate()).padStart(2, "0")
-      const year = departDate.getUTCFullYear()
-      const formattedDate = `${month}/${day}/${year}`
-    %>
-    <p>
-      Depart Date: <%= formattedDate %>
-    </p>
-    <%
-      const returnDate = new Date(traveler.returnDate)
-      const returnMonth = String(returnDate.getUTCMonth() + 1).padStart(2, "0")
-      const returnDay = String(returnDate.getUTCDate()).padStart(2, "0")
-      const returnYear = returnDate.getUTCFullYear()
-      const formattedReturnDate = `${returnMonth}/${returnDay}/${returnYear}`
-    %>
-    <p>
-      Return Date: <%= formattedReturnDate %>
-    </p>
-    <p>Destination: <%= traveler.destination %></p>
-    <% if (traveler.hotel) { %>
-    <p>Hotel: <%= traveler.hotel %></p>
-    <% } %> <% if (traveler.airline) { %>
-    <p>Airline: <%= traveler.airline %></p>
-    <% } %>
-    <p>Car Rental: <%= traveler.carRentalRequired %></p>
-    <p>Current Status: <%= traveler.status %></p>
-    <% if (traveler.notes) { %>
-    <p>Notes: <%= traveler.notes %></p>
-    <% } %>
+    <div class="show-body">
+      <div class="show-header">
+        <h1><%= traveler.firstName %> <%= traveler.lastName %></h1>
+        <div class="show-traveler">
+          <div class="show-travelerinfo">
+            <div class="phoneNumber">
+              <p>
+                Phone Number: <% const phoneNumber=traveler.phoneNumber.number;
+                const formattedPhoneNumber=`(${phoneNumber.slice(0, 3)})
+                ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}` %> <%=
+                formattedPhoneNumber %> <%= traveler.phoneNumber.category %> <%
+                if (traveler.phonePreferred===true) { %> 
+                  <%= " - Preferred Contact" %> 
+                <% } %>
+              </p>
+            </div>
+            <div class="email">
+              <p>
+                Email: <%= traveler.email %> 
+                <% if (traveler.emailPreferred===true) { %> 
+                  <%= " - Preferred Contact" %> 
+                  <% } %>
+              </p>
+            </div>
+            <% 
+            const departDate=new Date(traveler.departDate) 
+            const month=String(departDate.getUTCMonth() + 1).padStart(2, "0" ) 
+            const day=String(departDate.getUTCDate()).padStart(2, "0" ) 
+            const year=departDate.getUTCFullYear() 
+            const formattedDate=`${month}/${day}/${year}` 
+            %>
+            <p>Depart Date: <%= formattedDate %></p>
+            <% 
+            const returnDate=new Date(traveler.returnDate) 
+            const returnMonth=String(returnDate.getUTCMonth() + 1).padStart(2, "0" )
+            const returnDay=String(returnDate.getUTCDate()).padStart(2, "0" )
+            const returnYear=returnDate.getUTCFullYear() 
+            const formattedReturnDate=`${returnMonth}/${returnDay}/${returnYear}` 
+            %>
+            <p>Return Date: <%= formattedReturnDate %></p>
+            <p>Destination: <%= traveler.destination %></p>
+            <% if (traveler.hotel) { %>
+            <p>Hotel: <%= traveler.hotel %></p>
+            <% } %> 
+            <% if (traveler.airline) { %>
+            <p>Airline: <%= traveler.airline %></p>
+            <% } %>
+            <p>Car Rental: <%= traveler.carRentalRequired %></p>
+            <p>Current Status: <%= traveler.status %></p>
+            <div class="show-notes">
+              <% if (traveler.notes) { %>
+              <p>Notes: <%= traveler.notes %></p>
+            </div>
+            <% } %>
+            <div class="show-actions">
+              <a
+                href="/users/<%= user._id %>/travelers/<%= traveler._id %>/edit"
+                >Edit this Traveler</a
+              >
 
-    <a href="/users/<%= user._id %>/travelers/<%= traveler._id %>/edit"
-      >Edit this Traveler</a
-    >
-
-    <form
-      action="/users/<%= user._id %>/travelers/<%= traveler._id %>?_method=DELETE"
-      method="POST"
-    >
-      <button type="submit">Delete this Traveler</button>
-    </form>
+              <form
+                action="/users/<%= user._id %>/travelers/<%= traveler._id %>?_method=DELETE"
+                method="POST"
+              >
+                <button type="submit">Delete this Traveler</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

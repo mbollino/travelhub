@@ -16,17 +16,17 @@ body {
   background-size: cover;
   min-height: 100vh;
   width: 100vw;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 .main-header {
   font-weight: bold;
-  color: white;
+  color: rgb(255, 255, 255);
   font-size: 5.6em;
 }
 
 .subheader {
-  color: white;
+  color: rgb(255, 255, 255);
   margin: 0 20px 0 20px;
   font-size: 2.4em;
 }
@@ -60,11 +60,11 @@ body {
 
 .signup-link {
   background-color: rgb(73, 73, 239);
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 .signup-link:hover {
-  background-color: #ff5378;
+  background-color: rgb(255, 83, 120);
 }
 
 .signin-link {
@@ -73,7 +73,7 @@ body {
 }
 
 .signin-link:hover {
-  background-color: #ffffff;
+  background-color: rgb(255, 255, 255);
 }
 
 .signup {
@@ -95,7 +95,7 @@ body {
 }
 
 h1 {
-  color: #010714;
+  color: rgb(1, 7, 20);
   text-align: center;
 }
 
@@ -108,7 +108,7 @@ h1 {
   background-color: rgb(172, 172, 243);
   padding: 30px 40px 20px 40px;
   border-radius: 20px;
-  color: #25315d;
+  color: rgb(37, 49, 93);
   font-weight: bold;
 }
 
@@ -132,7 +132,7 @@ h1 {
   background-color: rgb(172, 172, 243);
   padding: 30px 40px 20px 40px;
   border-radius: 20px;
-  color: #25315d;
+  color: rgb(37, 49, 93);
   font-weight: bold;
 }
 
@@ -145,11 +145,12 @@ input {
 button {
   padding: 10px;
   background-color: rgb(3, 3, 99);
-  color: white;
+  color: rgb(255, 255, 255);
   border-radius: 30px;
   border: none;
   margin: 15px 0;
   font-size: 1.1em;
+  font-family: inherit;
   cursor: pointer;
 }
 
@@ -163,7 +164,7 @@ button:hover {
   background-size: cover;
   min-height: 100vh;
   width: 100vw;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 .alltravelers {
@@ -190,7 +191,7 @@ button:hover {
 .addapplink {
   padding: 10px;
   background-color: rgb(3, 3, 99);
-  color: white;
+  color: rgb(255, 255, 255);
   border-radius: 30px;
   border: none;
   font-size: 1.1em;
@@ -210,16 +211,14 @@ button:hover {
   background-size: cover;
   min-height: 100vh;
   width: 100vw;
-  color: white;
+  color: rgb(255, 255, 255);
   position: relative;
   display: block;
 }
 
 .newandedit {
   text-align: left;
-  /* padding: 5px 25px; */
   color: black;
-  /* font-size: 2em; */
   margin-bottom: 20px;
 }
 
@@ -228,9 +227,7 @@ button:hover {
   width: 100%;
   margin: auto;
   color: black;
-  /* gap: 20px; */
   padding: 30px;
-  /* box-sizing: border-box; */
 }
 
 .column {
@@ -244,4 +241,87 @@ button:hover {
   content: "";
   display: table;
   clear: both;
+}
+
+.show {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(192, 192, 241);
+}
+
+.show-body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.show-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+}
+
+.show-header > h1 {
+  color: rgb(3, 3, 99);
+  font-size: 3.4em;
+}
+
+.show-travelerinfo p {
+  color: rgb(206, 72, 102);
+  font-weight: bold;
+  font-size: 1.4em;
+  margin: 20px 40px;
+  text-align:left;
+}
+
+.show-travelerinfo {
+  width: 90%;
+  margin: 20px 0;
+}
+
+.show-notes {
+  background-color: rgb(192, 192, 241);
+  width: 75%;
+  border-radius: 20px;
+  padding: 5px 40px 20px 40px;
+  margin: 10px;
+}
+
+
+.show-notes > p {
+  font-weight: normal;
+  color: rgb(3, 3, 99);
+  text-align: left;
+  font-size: 1.2em;
+}
+
+.show-actions {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0 0 30px;
+}
+
+.show-actions > a, button {
+  padding: 10px;
+  background-color: rgb(3, 3, 99);
+  color: rgb(255, 255, 255);
+  border-radius: 30px;
+  border: none;
+  font-size: 1.1em;
+  padding: 2px 25px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.show-actions > a:hover, button:hover {
+  background-color: rgb(121, 121, 199);
 }
