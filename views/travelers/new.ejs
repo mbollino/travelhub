@@ -1,91 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-    <title>Add a New Traveler</title>
-  </head>
-  <body class="addtraveler">
-   
-    <%- include('../partials/_navbar.ejs') %>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <title>Add a New Traveler</title>
+</head>
+
+<body class="addtraveler">
+  <%- include('../partials/_navbar.ejs') %>
     <h1 class="newandedit">Add a New Traveler</h1>
     <div class="new-traveler">
       <form action="/users/<%= user._id %>/travelers" method="POST">
-        <div class="first-half">
-          <label for="lastName">Last Name:</label>
-          <input type="text" name="lastName" id="lastName" />
-
-          <label for="firstName">First Name:</label>
-          <input type="text" name="firstName" id="firstName" />
-
-          <label for="phoneNumber">Phone Number:</label>
-          <input
-            type="text"
-            name="phoneNumber.number"
-            id="phoneNumber.number"
-          />
-
-          <label for="phoneCategory">Type:</label>
-          <div class="newandeditradio">
-            <input
-              type="radio"
-              id="office"
-              name="phoneNumber.category"
-              value="office"
-            />
-            <label for="office">Office</label>
-            <input
-              type="radio"
-              id="mobile"
-              name="phoneNumber.category"
-              value="mobile"
-            />
+        <div class="column">
+          <div class="lastName">
+            <label for="lastName">Last Name:</label>
+            <input type="text" name="lastName" id="lastName" />
           </div>
-          <label for="mobile">Mobile</label>
-          <label for="phonePreferred">Preferred Contact</label>
-          <input type="checkbox" name="phonePreferred" id="phonePreferred" />
-
-          <label for="email">Email:</label>
-          <input type="text" name="email" id="email" />
-          <label for="emailPreferred">Preferred Contact</label>
-          <input type="checkbox" name="emailPreferred" id="emailPreferred" />
+          <div class="firstName">
+            <label for="firstName">First Name:</label>
+            <input type="text" name="firstName" id="firstName" />
+          </div>
+          <div class="phoneNumber">
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="text" name="phoneNumber.number" id="phoneNumber.number" />
+            <label for="phonePreferred">Preferred Contact</label>
+            <input type="checkbox" name="phonePreferred" id="phonePreferred" />
+          </div>
+          <div class="phoneCategory">
+            <label for="phoneCategory">Type:</label>
+            <div class="newandeditradio">
+              <input type="radio" id="office" name="phoneNumber.category" value="office" />
+              <label for="office">Office</label>
+              <input type="radio" id="mobile" name="phoneNumber.category" value="mobile" />
+              <label for="mobile">Mobile</label>
+            </div>
+          </div>
+          <div class="email">
+            <label for="email">Email:</label>
+            <input type="text" name="email" id="email" />
+            <label for="emailPreferred">Preferred Contact</label>
+            <input type="checkbox" name="emailPreferred" id="emailPreferred" />
+          </div>
+          <div class="departDate">
+            <label for="departDate">Depart Date:</label>
+            <input type="date" name="departDate" id="departDate" />
+          </div>
+          <div class="returnDate">
+            <label for="returnDate">Return Date:</label>
+            <input type="date" name="returnDate" id="returnDate" />
+          </div>
         </div>
-        <div class="second-">
-          <label for="departDate">Depart Date:</label>
-          <input type="date" name="departDate" id="departDate" />
-
-          <label for="returnDate">Return Date:</label>
-          <input type="date" name="returnDate" id="returnDate" />
-
-          <label for="destination">Destination:</label>
-          <input type="text" name="destination" id="destination" />
-
-          <label for="hotel">Hotel:</label>
-          <input type="text" name="hotel" id="hotel" />
-
-          <label for="airline">Airline:</label>
-          <input type="text" name="airline" id="airline" />
-
-          <label for="carRentalRequired">Require Car Rental:</label>
-          <select id="carRentalRequired" name="carRentalRequired">
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-            <option value="maybe">Maybe</option>
-          </select>
-
-          <label for="status">Status:</label>
-          <select id="status" name="status">
-            <option value="tentative">Tentative</option>
-            <option value="paymentPending">Payment Pending</option>
-            <option value="booked">Booked</option>
-          </select>
-
-          <label for="notes">Notes:</label>
-          <textarea name="notes" id="notes"></textarea>
+        <div class="column">
+          <div class="destination">
+            <label for="destination">Destination:</label>
+            <input type="text" name="destination" id="destination" />
+          </div>
+          <div class="hotel">
+            <label for="hotel">Hotel:</label>
+            <input type="text" name="hotel" id="hotel" />
+          </div>
+          <div class="airline">
+            <label for="airline">Airline:</label>
+            <input type="text" name="airline" id="airline" />
+          </div>
+          <div class="carRentalRequired">
+            <label for="carRentalRequired">Require Car Rental:</label>
+            <select id="carRentalRequired" name="carRentalRequired">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+              <option value="maybe">Maybe</option>
+            </select>
+          </div>
+          <div class="status">
+            <label for="status">Status:</label>
+            <select id="status" name="status">
+              <option value="tentative">Tentative</option>
+              <option value="paymentPending">Payment Pending</option>
+              <option value="booked">Booked</option>
+            </select>
+          </div>
+          <div class="notes">
+            <label for="notes">Notes:</label>
+            <textarea name="notes" id="notes"></textarea>
+          </div>
         </div>
         <button type="submit">Add Traveler</button>
       </form>
     </div>
-  </body>
+</body>
+
 </html>

@@ -1,88 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/style.css">
-    <title>Edit <%= traveler.firstName %> <%= traveler.lastName %></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Edit <%= traveler.firstName %>
+            <%= traveler.lastName %>
+    </title>
 </head>
 <body class="changetraveler">
-  
     <%- include('../partials/_navbar.ejs') %>
-    <h1 class="newandedit">Edit <%= traveler.firstName %> <%= traveler.lastName %></h1>
-    <div class="edit-traveler">
-    <form action="/users/<%= user._id %>/travelers/<%= traveler._id %>?_method=PUT" method="POST">
-        <div class="first-half">
-        <label for="lastName">Last Name:</label>
-        <input type="text" name="lastName" id="lastName" value="<%= traveler.lastName %>">
+        <h1 class="newandedit">
+            Edit <%= traveler.firstName %>
+                <%= traveler.lastName %>
+        </h1>
+        <div class="edit-traveler">
+            <form action="/users/<%= user._id %>/travelers/<%= traveler._id %>?_method=PUT" method="POST">
+                <div class="column">
+                    <div class="lastName">
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" name="lastName" id="lastName" value="<%= traveler.lastName %>" />
+                    </div>
+                    <div class="firstName">
+                        <label for="firstName">First Name:</label>
+                        <input type="text" name="firstName" id="firstName" value="<%= traveler.firstName %>" />
+                    </div>
+                    <div class="phoneNumber">
+                        <label for="phoneNumber">Phone Number:</label>
+                        <input type="text" name="phoneNumber.number" id="phoneNumber.number"
+                            value="<%= traveler.phoneNumber.number %>" />
+                        <label for="phonePreferred">Preferred Contact</label>
+                        <input type="checkbox" name="phonePreferred" id="phonePreferred" <% if (traveler.phonePreferred)
+                            { %> checked <% } %> >
+                            <div class="phoneCategory">
+                                <label for="phoneCategory">Type:</label>
+                                <div class="newandeditradio">
+                                    <input type="radio" id="office" name="phoneNumber.category" value="office"
+                                        <%=traveler.phoneNumber.category==="office" ? "checked" : '' %>>
+                                    <label for="office">Office</label>
+                                    <input type="radio" id="mobile" name="phoneNumber.category" value="mobile"
+                                        <%=traveler.phoneNumber.category==="mobile" ? "checked" : '' %>>
+                                    <label for="mobile">Mobile</label>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="email">
+                        <label for="email">Email:</label>
+                        <input type="text" name="email" id="email" value="<%= traveler.email %>" />
 
-        <label for="firstName">First Name:</label>
-        <input type="text" name="firstName" id="firstName" value="<%= traveler.firstName %>">
-
-        <label for="phoneNumber">Phone Number:</label>
-        <input type="text" name="phoneNumber.number" id="phoneNumber.number" value="<%= traveler.phoneNumber.number %>">
-
-        <label for="phoneCategory">Type:</label>
-        <div class="newandeditradio">
-        <input type="radio" id="office" name="phoneNumber.category" value="office" <%= traveler.phoneNumber.category === "office" ? "checked" : '' %>>
-        <label for="office">Office</label>
-        <input type="radio" id="mobile" name="phoneNumber.category" value="mobile" <%= traveler.phoneNumber.category === "mobile" ? "checked" : '' %>>
-        <label for="mobile">Mobile</label>
-        <label for="phonePreferred">Preferred Contact</label>
-        <input type="checkbox" name="phonePreferred" id="phonePreferred" <% if (traveler.phonePreferred) { %> checked <% } %> >
+                        <label for="emailPreferred">Preferred Contact</label>
+                        <input type="checkbox" name="emailPreferred" id="emailPreferred" <% if (traveler.emailPreferred)
+                            { %> checked <% } %> >
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="departDate">
+                        <label for="departDate">Depart Date:</label>
+                        <input type="date" name="departDate" id="departDate"
+                            value="<%= traveler.departDate ? new Date(traveler.departDate).toISOString().split('T')[0] : '' %>" />
+                    </div>
+                    <div class="returnDate">
+                        <label for="returnDate">Return Date:</label>
+                        <input type="date" name="returnDate" id="returnDate"
+                            value="<%= traveler.returnDate ? new Date(traveler.returnDate).toISOString().split('T')[0] : '' %>" />
+                    </div>
+                    <div class="destination">
+                        <label for="destination">Destination:</label>
+                        <input type="text" name="destination" id="destination" value="<%= traveler.destination %>" />
+                    </div>
+                    <div class="hotel">
+                        <label for="hotel">Hotel:</label>
+                        <input type="text" name="hotel" id="hotel" value="<%= traveler.hotel %>" />
+                    </div>
+                    <div class="airline">
+                        <label for="airline">Airline:</label>
+                        <input type="text" name="airline" id="airline" value="<%= traveler.airline %>" />
+                    </div>
+                    <div class="carRentalRequired">
+                        <label for="carRentalRequired">Require Car Rental:</label>
+                        <select id="carRentalRequired" name="carRentalRequired">
+                            <option value="yes" <%=traveler.carRentalRequired==='yes' ? 'selected' : '' %>
+                                >Yes</option>
+                            <option value="no" <%=traveler.carRentalRequired==='no' ? 'selected' : '' %>
+                                >No</option>
+                            <option value="maybe" <%=traveler.carRentalRequired==='maybe' ? 'selected' : '' %>
+                                >Maybe</option>
+                        </select>
+                    </div>
+                    <div class="status">
+                        <label for="status">Status:</label>
+                        <select id="status" name="status">
+                            <option value="tentative" <%=traveler.status==='tentative' ? 'selected' : '' %>
+                                >Tentative</option>
+                            <option value="paymentPending" <%=traveler.status==='paymentPending' ? 'selected' : '' %>
+                                >Payment Pending</option>
+                            <option value="booked" <%=traveler.status==='booked' ? 'selected' : '' %>
+                                >Booked</option>
+                        </select>
+                    </div>
+                    <div class="notes">
+                        <label for="notes">Notes:</label>
+                        <textarea name="notes" id="notes"><%= traveler.notes %></textarea>
+                    </div>
+                </div>
+                <div class="submit">
+                    <button type="submit">Update Traveler</button>
+                </div>
+            </form>
         </div>
-        <label for="email">Email:</label>
-        <input type="text" name="email" id="email" value="<%= traveler.email %>">
-        <label for="emailPreferred">Preferred Contact</label>
-        <input type="checkbox" name="emailPreferred" id="emailPreferred" <% if (traveler.emailPreferred) { %> checked <% } %> >
-        </div>
-        <div class="second-half">
-        <label for="departDate">Depart Date:</label>
-        <input type="date" name="departDate" id="departDate" value="<%= traveler.departDate ? new Date(traveler.departDate).toISOString().split('T')[0] : '' %>">
-
-        <label for="returnDate">Return Date:</label>
-        <input type="date" name="returnDate" id="returnDate" value="<%= traveler.returnDate ? new Date(traveler.returnDate).toISOString().split('T')[0] : '' %>">
-
-        <label for="destination">Destination:</label>
-        <input type="text" name="destination" id="destination" value="<%= traveler.destination %>">
-
-        <label for="hotel">Hotel:</label>
-        <input type="text" name="hotel" id="hotel" value="<%= traveler.hotel %>">
-
-        <label for="airline">Airline:</label>
-        <input type="text" name="airline" id="airline" value="<%= traveler.airline %>">
-
-        <label for="carRentalRequired">Require Car Rental:</label>
-        <select id="carRentalRequired" name="carRentalRequired">
-            <option value="yes"
-                <%= traveler.carRentalRequired === 'yes' ? 'selected' : '' %>
-                >Yes</option>
-            <option value="no"
-                <%= traveler.carRentalRequired === 'no' ? 'selected' : '' %>
-                >No</option>
-            <option value="maybe"
-                <%= traveler.carRentalRequired === 'maybe' ? 'selected' : '' %>
-                >Maybe</option>
-        </select>
-
-        <label for="status">Status:</label>
-        <select id="status" name="status">
-            <option value="tentative"
-                <%= traveler.status === 'tentative' ? 'selected' : '' %>
-                >Tentative</option>
-            <option value="paymentPending"
-                <%= traveler.status === 'paymentPending' ? 'selected' : '' %>
-                >Payment Pending</option>
-            <option value="booked"
-                <%= traveler.status === 'booked' ? 'selected' : '' %>
-                >Booked</option>
-        </select>
-
-        <label for="notes">Notes:</label>
-        <textarea name="notes" id="notes"><%= traveler.notes %></textarea>
-        </div>
-        <button type="submit">Update Traveler</button>
-    </form>
-    </div>
 </body>
 </html>

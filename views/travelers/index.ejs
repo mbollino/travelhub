@@ -24,7 +24,8 @@
               const month = String(departDate.getUTCMonth() + 1).padStart(2, "0") 
               const day = String(departDate.getUTCDate()).padStart(2, "0") 
               const year = departDate.getUTCFullYear() 
-              const formattedDate = `${month}/${day}/${year}` %>
+              const formattedDate = `${month}/${day}/${year}` 
+              %>
               <p>
                 Depart Date: <%= formattedDate %> <%= traveler.firstName %> <%= traveler.lastName %>
               </p>
