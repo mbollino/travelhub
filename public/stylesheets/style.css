@@ -325,3 +325,21 @@ button:hover {
 .show-actions > a:hover, button:hover {
   background-color: rgb(121, 121, 199);
 }
+
+.profileinfo {
+  text-align: center;
+  font-weight: 600;
+}
+
+.profile-actions > a, button {
+  padding: 10px;
+  font-weight: 600;
+  background-color: rgb(3, 3, 99);
+  color: rgb(255, 255, 255);
+  border-radius: 30px;
+  border: none;
+  font-size: 1.1em;
+  padding: 2px 25px;
+  text-decoration: none;
+  cursor: pointer;
+}

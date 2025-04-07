@@ -85,16 +85,15 @@ const userSchema = mongoose.Schema({
     required: true,
   },
   userPhoneNumber: {
-    userNumber: {
-      type: String,
-      required: true,
-    },
-    userCategory: {
-      type: String,
-      enum: ["office", "mobile"],
-      required: true,
-    },
+    type: String,
+    required: true,
   },
+  userPhoneCategory: {
+    type: String,
+    enum: ["office", "mobile"],
+    required: true,
+  },
+
   travelers: [travelerSchema],
 });
 

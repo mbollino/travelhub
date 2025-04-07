@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title><%= user.userFirstName %> <%=user.userLastName %></title>
+  </head>
+  <body class="show">
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Hello, <%= user.userFirstName %></h1>
+    <div class="profileinfo">
+      <p><%= user.userEmail %></p>
+      <p><%= user.userPhoneNumber %> <%= user.userPhoneCategory %></p>
+      <div class="profile-actions">
+        <a href="/auth/<%= user._id %>/profile/edit">Edit Profile</a>
+        <form
+          action="/auth/<%= user._id %>/profile?_method=DELETE"
+          method="POST"
+        >
+          <button type="submit">Delete Profile</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

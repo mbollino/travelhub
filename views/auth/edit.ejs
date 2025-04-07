@@ -4,36 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
-    <title>Sign Up</title>
+    <title>Edit Profile</title>
   </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>Create a new account!</h1>
+    <h1>Hello, <%= user.userFirstName %>.  What would you like to change?</h1>
     <div class="signup">
-      <form action="/auth/sign-up" method="POST">
+      <form action="/auth/<%= user._id %>/profile?_method=PUT" method="POST">
         <label for="username">Username:</label>
-        <input type="text" name="username" id="username" />
-
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" />
-
-        <label for="confirmPassword">Confirm Password:</label>
-        <input type="password" name="confirmPassword" id="confirmPassword" />
+        <input type="text" name="username" id="username" value="<%= user.username %>"/>
 
         <label for="userFirstName">First Name:</label>
-        <input type="text" name="userFirstName" id="userFirstName" />
+        <input type="text" name="userFirstName" id="userFirstName" value="<%= user.userFirstName %>" />
 
         <label for="userLastName">Last Name:</label>
-        <input type="text" name="userLastName" id="userLastName" />
+        <input type="text" name="userLastName" id="userLastName" value="<%= user.userLastName %>" />
 
         <label for="userEmail">Email:</label>
-        <input type="text" name="userEmail" id="userEmail" />
+        <input type="text" name="userEmail" id="userEmail" value="<%= user.userEmail %>"/>
 
         <label for="userPhoneNumber">Phone Number:</label>
         <input
           type="text"
           name="userPhoneNumber"
           id="userPhoneNumber"
+          value="<%= user.userPhoneNumber %>"
         />
         <div class="radio">
           <label for="userPhoneCategory">Type:</label>
@@ -42,7 +37,7 @@
             id="office"
             name="userPhoneCategory"
             value="office"
-          />
+            <%=user.userPhoneCategory==="office" ? "checked" : '' %>>
           <label for="office">Office</label>
 
           <input
@@ -50,10 +45,10 @@
             id="mobile"
             name="userPhoneCategory"
             value="mobile"
-          />
+            <%=user.userPhoneCategory==="mobile" ? "checked" : '' %>>
           <label for="mobile">Mobile</label>
         </div>
-        <button type="submit">Sign up</button>
+        <button type="submit">Update Profile</button>
       </form>
     </div>
   </body>

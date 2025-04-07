@@ -16,12 +16,10 @@
           <div class="show-travelerinfo">
             <div class="phoneNumber">
               <p>
-                Phone Number: <% const phoneNumber=traveler.phoneNumber.number;
-                const formattedPhoneNumber=`(${phoneNumber.slice(0, 3)})
-                ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}` %> <%=
-                formattedPhoneNumber %> <%= traveler.phoneNumber.category %> <%
-                if (traveler.phonePreferred===true) { %> 
-                  <%= " - Preferred Contact" %> 
+                Phone Number: <% const phoneNumber=traveler.phoneNumber.number; const formattedPhoneNumber=`(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}` %> 
+                <%= formattedPhoneNumber %> <%= traveler.phoneNumber.category %> 
+                <% if (traveler.phonePreferred===true) { %> 
+                <%= " - Preferred Contact" %> 
                 <% } %>
               </p>
             </div>
@@ -29,8 +27,8 @@
               <p>
                 Email: <%= traveler.email %> 
                 <% if (traveler.emailPreferred===true) { %> 
-                  <%= " - Preferred Contact" %> 
-                  <% } %>
+                <%= " - Preferred Contact" %> 
+                <% } %>
               </p>
             </div>
             <% 
@@ -52,8 +50,7 @@
             <p>Destination: <%= traveler.destination %></p>
             <% if (traveler.hotel) { %>
             <p>Hotel: <%= traveler.hotel %></p>
-            <% } %> 
-            <% if (traveler.airline) { %>
+            <% } %> <% if (traveler.airline) { %>
             <p>Airline: <%= traveler.airline %></p>
             <% } %>
             <p>Car Rental: <%= traveler.carRentalRequired %></p>
